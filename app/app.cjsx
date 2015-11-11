@@ -15,18 +15,18 @@ customStyles = {
     backgroundColor   : 'rgba(0, 0, 0, 0.75)'
   },
   content : {
-    position                   : 'absolute',
-    top                        : '40px',
-    left                       : '40px',
-    right                      : '40px',
-    bottom                     : '40px',
-    border                     : '1px solid #ccc',
-    background                 : '#fff',
-    overflow                   : 'auto',
-    WebkitOverflowScrolling    : 'touch',
-    borderRadius               : '4px',
-    outline                    : 'none',
-    padding                    : '20px'
+      border: "1px solid #CCC"
+      background: "#FFF none repeat scroll 0% 0%"
+      overflow: "auto"
+      outline: "medium none"
+      padding: "20px"
+      "border-radius": "4px"
+      width: "600px"
+      left: "50%"
+      position: "absolute"
+      "margin-right": "-50%"
+      transform: "translate(-50%, -50%)"
+      top: "50%"
   }
 }
 
@@ -62,6 +62,7 @@ CreateButton = React.createClass
   openModal: ->
     this.setState
       modalIsOpen: true
+    $("#user-textbox").focus()
   closeModal: ->
     this.setState
       modalIsOpen: false
@@ -85,7 +86,7 @@ CreateButton = React.createClass
         style={customStyles} >
         <h2> Create a New Post </h2>
         <form action="#" >
-          <textarea value={this.state.bodyvalue} onChange={this.eventChange} ></textarea>
+          <textarea id="user-textbox" value={this.state.bodyvalue} onChange={this.eventChange} ></textarea>
           <button onClick={this.addPost}>create</button>
         </form>
       </Modal>
