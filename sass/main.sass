@@ -89,18 +89,20 @@ article
 
     li
       padding-left: 2px
-      height: 36px
+      min-height: 36px
       list-style-type: none
       border-bottom: 1px dotted #cccccc
 
       div
 
         width: 100%
-        text-overflow: ellipsis
-        overflow: hidden
-        white-space: nowrap
+        // text-overflow: ellipsis
+        // overflow: hidden
+        white-space: pre-wrap
+        word-wrap: break-word
        
       .detail
+        padding-top: 2px
         .commit-author
           display: inline
           color: #5c5c5c
