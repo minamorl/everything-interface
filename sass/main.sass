@@ -1,0 +1,154 @@
+@import url(http://fonts.googleapis.com/css?family=Abril+Fatface)
+
+$font-family: Avenir , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "メイリオ" , Meiryo , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" ,  "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif
+$article-main-font-size: 16px
+$logo-color: #6F6F6F
+$link-color: #308ca8
+
+body 
+  font-family: $font-family
+  overflow-y: scroll
+
+  a
+    color: $link-color
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+    &:visited
+      color: darken($link-color, 15%)
+      
+
+header 
+  padding: 20px 0 10px 0
+  width: 100%
+  text-align: center
+  background-color: #FFFFFF
+  a.logo 
+    font-size: 24px
+    border: none
+
+    text-decoration: none
+    &:hover
+      color: darken($logo-color,20%)
+
+
+article + article
+  margin-top: 60px
+  
+.createButton
+  width: 10%
+  height:
+  display: inline-block
+  button
+    box-sizing: border-box
+    width: 100%
+    padding: 2px
+    border: 1px solid $logo-color
+    border-radius: 5px
+    font-size: 20px
+    background-color: #fcfcfc
+
+
+
+
+article 
+  h1 
+    font-size: 28px
+    margin-bottom: 0px
+    color: rgb(62, 104, 173)
+  time 
+    display: block
+    color: #acacac
+    border-left: 2px solid #cccccc
+    font-size: 12px
+    padding-left: 14px
+    margin-left: 2px
+    margin-bottom: 20px
+  p 
+    margin: 0 0 10px 0
+    font-size: $article-main-font-size
+    line-height: $article-main-font-size + 8px
+  
+.content 
+  max-width: 800px
+  text-align:left
+  margin-left: auto
+  margin-right: auto
+
+  input
+    box-sizing: border-box
+    width: 90%
+    padding: 2px
+    border: 1px solid #cccccc
+    border-radius: 5px
+    font-size: 20px
+
+  ul
+    padding: 0 
+    
+
+    li
+      padding-left: 2px
+      height: 36px
+      list-style-type: none
+      border-bottom: 1px dotted #cccccc
+
+      div
+
+        width: 100%
+        text-overflow: ellipsis
+        overflow: hidden
+        white-space: nowrap
+       
+      .detail
+        .commit-author
+          display: inline
+          color: #5c5c5c
+        .project
+          display: inline
+          &:before
+            content: " - "
+          color: #cc8888
+        font-size: 12px
+
+img
+  max-width: 100%
+
+footer 
+  margin-top: 60px
+  padding-bottom: 20px
+
+  h2 
+    margin-top: 30px
+    margin-bottom: 10px
+  .articles li
+    time
+      font-size: 80%
+      color: #666
+      &:before
+        content: " - "
+      
+      
+  p 
+    margin: 0
+  img.user-image
+    display: inline-block 
+    width: 100px
+    height: 100px
+    position: relative
+    overflow: hidden
+    border-radius: 50%
+    vertical-align: top
+    margin-right: 30px
+  .user-bio
+    display:inline-block
+    vertical-align: top
+
+    a
+      &:visited
+        color: $link-color
+
+    ul
+      padding: 0 00px
+      margin: 0 20px
+      list-style-type: square

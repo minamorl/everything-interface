@@ -1,0 +1,23 @@
+{
+  "name": "minamorl-com",
+  "version": "0.1.0",
+  "authors": [
+    "celirx <celirx@users.noreply.github.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "~3.0.3",
+    "lightbox2": "~2.8.1"
+  },
+  "devDependencies": {
+    "octicons": "~3.1.0",
+    "highlightjs": "~8.7.0"
+  }
+}
