@@ -36,11 +36,23 @@ SearchBox = React.createClass
     textvalue: ""
     messagelabel:"messages"
     results: []
+    logged_in: false
   componentDidMount: ->
     $.getJSON "/api/thread.json", {q: this.state.textvalue}, (data) =>
       this.setState
         results: data.results
-        messagelabel: "You are logged in as @" + data.results[0].auth.name
+
+
+      if _.isNull(data.results[0].auth.name)
+        this.setState
+          messagelabel: ""
+          logged_in: false
+
+      else
+        this.setState
+          messagelabel: "You are logged in as @" + data.results[0].auth.name
+          logged_in: true
+
   eventChange: (e) ->
     this.setState
       textvalue: e.target.value
@@ -63,15 +75,20 @@ SearchBox = React.createClass
     <div>
       <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="thread title"/>
       <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList}/>
-      <MessageLabel status={this.state.messagelabel}/>
+      <MessageLabel status={this.state.messagelabel} isSignUp={!this.state.logged_in}/>
       <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
     </div>
 
 MessageLabel = React.createClass
   render: ->
-    <div className="message-label">
-      {this.props.status}
-    </div>
+    if !this.props.isSignUp
+      <div className="message-label">
+        {this.props.status}
+      </div>
+    else
+      <div className="message-label">
+        Wanna join a chat? Sign up from <a href="/signup">here</a>.
+      </div>
 
 CreateButton = React.createClass
   getInitialState: ->
