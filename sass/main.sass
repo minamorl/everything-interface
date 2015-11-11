@@ -2,9 +2,12 @@
 
 $font-family: Avenir , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "メイリオ" , Meiryo , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" ,  "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif
 $article-main-font-size: 16px
-$logo-color: #6F6F6F
-$link-color: #308ca8
+$logo-color: #33acc8
+$link-color: lighten(#308ca8, 20%)
 
+.message-label
+  color: lighten(#000, 33%)
+  font-size: 14px
 body 
   font-family: $font-family
   overflow-y: scroll
@@ -29,8 +32,9 @@ header
   text-align: center
   background-color: #FFFFFF
   a.logo 
-    font-size: 24px
+    font-size: 34px
     border: none
+    color: $logo-color
 
     text-decoration: none
     &:hover

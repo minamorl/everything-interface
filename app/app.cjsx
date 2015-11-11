@@ -20,11 +20,12 @@ customStyles = {
       overflow: "auto"
       outline: "medium none"
       padding: "20px"
-      "border-radius": "4px"
+      "borderRadius": "4px"
       width: "600px"
+      height: "260px"
       left: "50%"
       position: "absolute"
-      "margin-right": "-50%"
+      "marginRight": "-50%"
       transform: "translate(-50%, -50%)"
       top: "50%"
   }
@@ -33,11 +34,13 @@ customStyles = {
 SearchBox = React.createClass
   getInitialState: ->
     textvalue: ""
+    messagelabel:"messages"
     results: []
   componentDidMount: ->
     $.getJSON "/api/thread.json", {q: this.state.textvalue}, (data) =>
       this.setState
         results: data.results
+        messagelabel: "You are logged in as @" + data.results[0].auth.name
   eventChange: (e) ->
     this.setState
       textvalue: e.target.value
@@ -48,11 +51,26 @@ SearchBox = React.createClass
     $.getJSON "/api/thread.json", {q: this.state.textvalue}, (data) =>
       this.setState
         results: data.results
+  search: (keyword) ->
+    $.getJSON "/api/thread.json", {q: keyword}, (data) =>
+      this.setState
+        results: data.results
+        textvalue: keyword
+
+
+  
   render: ->
     <div>
-      <input type="text" value={this.state.textvalue} onChange={this.eventChange}/>
+      <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="thread title"/>
       <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList}/>
-      <ListUI filterWord={this.state.textvalue} results={this.state.results} />
+      <MessageLabel status={this.state.messagelabel}/>
+      <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
+    </div>
+
+MessageLabel = React.createClass
+  render: ->
+    <div className="message-label">
+      {this.props.status}
     </div>
 
 CreateButton = React.createClass
@@ -98,16 +116,19 @@ ListUI = React.createClass
     <ul>
       {
         for r, index in this.props.results
-          <ListElement key={index} data={r}/>
+          <ListElement key={index} data={r} search={this.props.search}/>
       }
     </ul>
 
 ListElement = React.createClass
+  linkClick: ->
+    this.props.search(this.props.data.thread.name)
+
   render:->
     <li>
       <div>{this.props.data.body}</div>
       <div className="detail">
-        <div className="commit-author">{this.props.data.author.screen_name}</div>
+        <div className="commit-author"><a href="#" onClick={this.linkClick}>{this.props.data.thread.name}</a></div>
         <div className="project">{this.props.data.author.name}</div>
       </div>
     </li>
