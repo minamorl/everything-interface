@@ -101,7 +101,7 @@ CreateButton = React.createClass
     this.setState
       modalIsOpen: false
   addPost: ->
-    $.getJSON "/api/comment.json", {q: this.props.queryvalue, body: this.state.bodyvalue}, (data) =>
+    $.post "/api/comment.json", {q: this.props.queryvalue, body: this.state.bodyvalue}, (data) =>
       if "error" in data
         console.log data.error
       this.props.onPost()

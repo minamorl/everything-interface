@@ -11,7 +11,7 @@ LoginForm = React.createClass
     message: ""
 
   login: ->
-    $.getJSON "/api/login.json", {username: this.state.username, password: this.state.password}, (data) =>
+    $.post "/api/login.json", {username: this.state.username, password: this.state.password}, (data) =>
       this.setState
         message: data.results.message
 

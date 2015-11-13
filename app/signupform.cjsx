@@ -11,7 +11,7 @@ SignupForm = React.createClass
     message: ""
 
   signup: ->
-    $.getJSON "/api/signup.json", {username: this.state.username, password: this.state.password}, (data) =>
+    $.post "/api/signup.json", {username: this.state.username, password: this.state.password}, (data) =>
       this.setState
         message: data.results.message
 
