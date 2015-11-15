@@ -111,8 +111,7 @@ CreateButton = React.createClass
       if "error" in data
         console.log data.error
       this.props.onPost()
-        
-    this.closeModal()
+      this.closeModal()
   eventChange: (e) ->
     this.setState
       bodyvalue: e.target.value
@@ -124,7 +123,7 @@ CreateButton = React.createClass
         isOpen={this.state.modalIsOpen}
         onRequestClose={this.closeModal}
         style={customStyles} >
-        <form action="#" >
+        <form action="javascript:void(0)">
           <textarea id="user-textbox" value={this.state.bodyvalue} onChange={this.eventChange} ></textarea>
           <button onClick={this.addPost}>create</button>
         </form>
