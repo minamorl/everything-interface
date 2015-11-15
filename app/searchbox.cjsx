@@ -115,7 +115,7 @@ CreateButton = React.createClass
 
   render: ->
     <div className="createButton">
-      <button onClick={this.openModal}>new</button>
+      <button onClick={this.openModal}><span className="octicon octicon-comment"></span></button>
       <Modal 
         isOpen={this.state.modalIsOpen}
         onRequestClose={this.closeModal}
