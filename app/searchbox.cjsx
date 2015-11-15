@@ -102,6 +102,7 @@ CreateButton = React.createClass
     this.setState
       modalIsOpen: true
     $("#user-textbox").focus()
+    window.history.pushState(null, null, "#/thread/"+this.props.queryvalue)
   closeModal: ->
     this.setState
       modalIsOpen: false
@@ -142,13 +143,16 @@ ListUI = React.createClass
 
 ListElement = React.createClass
   linkClick: ->
+    window.history.pushState(null, null, "#/thread/"+this.props.data.thread.name)
     this.props.search(this.props.data.thread.name)
 
   render:->
     <li>
       <div>{this.props.data.body}</div>
       <div className="detail">
-        <div className="commit-author"><a href="#" onClick={this.linkClick}>{this.props.data.thread.name}</a></div>
+        <div className="commit-author">
+          <a href="javascript:void(0)" onClick={this.linkClick}>{this.props.data.thread.name}</a>
+        </div>
         <div className="project">{this.props.data.author.name}</div>
       </div>
     </li>
