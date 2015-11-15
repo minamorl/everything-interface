@@ -10,6 +10,9 @@ SignupForm = require './signupform.cjsx'
 
 init = ->
   app = document.getElementById 'searchbox'
+  $(".logo").click ->
+    window.location.href = "#/thread/"
+
   Modal.setAppElement app
   router(app)
 
@@ -33,10 +36,13 @@ router = (app) ->
       <SignupForm />, app
     )
   else if startswith(location.hash, "#/thread/")
+    ReactDOM.unmountComponentAtNode app
     ReactDOM.render(
       <SearchBox query={window.decodeURI(window.location.hash.slice(9))}/>, app
     )
   else
+    window.history.pushState(null, null, "#/thread/")
+    ReactDOM.unmountComponentAtNode app
     ReactDOM.render(
       <SearchBox query=""/>, app
     )
