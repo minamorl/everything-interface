@@ -18,6 +18,7 @@ customStyles = {
       overflow: "auto"
       outline: "medium none"
       padding: "20px"
+      overflowY: "hidden"
       "borderRadius": "4px"
       maxWidth: "600px"
       width: "80%"
