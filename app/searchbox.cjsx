@@ -38,10 +38,11 @@ SearchBox = React.createClass
     results: []
     logged_in: false
   componentDidMount: ->
-    $.getJSON "/api/thread.json", {q: this.state.textvalue}, (data) =>
+    this.setState
+      textvalue: this.props.query
+    $.getJSON "/api/thread.json", {q: this.props.query}, (data) =>
       this.setState
         results: data.results
-
 
       if _.isNull(data.results[0].auth.name)
         this.setState
@@ -52,6 +53,8 @@ SearchBox = React.createClass
         this.setState
           messagelabel: "You are logged in as @" + data.results[0].auth.name
           logged_in: true
+
+      
 
   eventChange: (e) ->
     this.setState
@@ -137,8 +140,6 @@ ListUI = React.createClass
       }
     </ul>
 
-_replace = (c) ->
-  "*"
 ListElement = React.createClass
   linkClick: ->
     this.props.search(this.props.data.thread.name)
@@ -148,7 +149,7 @@ ListElement = React.createClass
       <div>{this.props.data.body}</div>
       <div className="detail">
         <div className="commit-author"><a href="#" onClick={this.linkClick}>{this.props.data.thread.name}</a></div>
-        <div className="project">{_.map(this.props.data.author.name, _replace)}</div>
+        <div className="project">{this.props.data.author.name}</div>
       </div>
     </li>
 
