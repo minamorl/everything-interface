@@ -19,7 +19,8 @@ customStyles = {
       outline: "medium none"
       padding: "20px"
       "borderRadius": "4px"
-      width: "600px"
+      maxWidth: "600px"
+      width: "80%"
       height: "260px"
       left: "50%"
       position: "absolute"
@@ -118,7 +119,6 @@ CreateButton = React.createClass
         isOpen={this.state.modalIsOpen}
         onRequestClose={this.closeModal}
         style={customStyles} >
-        <h2> Create a New Post </h2>
         <form action="#" >
           <textarea id="user-textbox" value={this.state.bodyvalue} onChange={this.eventChange} ></textarea>
           <button onClick={this.addPost}>create</button>
