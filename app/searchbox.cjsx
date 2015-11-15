@@ -137,6 +137,8 @@ ListUI = React.createClass
       }
     </ul>
 
+_replace = (c) ->
+  "*"
 ListElement = React.createClass
   linkClick: ->
     this.props.search(this.props.data.thread.name)
@@ -146,7 +148,7 @@ ListElement = React.createClass
       <div>{this.props.data.body}</div>
       <div className="detail">
         <div className="commit-author"><a href="#" onClick={this.linkClick}>{this.props.data.thread.name}</a></div>
-        <div className="project">{this.props.data.author.name}</div>
+        <div className="project">{_.map(this.props.data.author.name, _replace)}</div>
       </div>
     </li>
 
