@@ -22,7 +22,7 @@ customStyles = {
       "borderRadius": "4px"
       maxWidth: "600px"
       width: "80%"
-      height: "260px"
+      height: "160px"
       left: "50%"
       position: "absolute"
       "marginRight": "-50%"
