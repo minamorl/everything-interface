@@ -1,8 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Abril+Fatface)
 
 $font-family: Avenir , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "メイリオ" , Meiryo , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" ,  "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif
+$background-color: #f9f9f9
 $article-main-font-size: 16px
+// $logo-color: #FFFFFF
+// $header-color: #FF9F3A
 $logo-color: #FF9F3A
+$header-color: #FFFFFF 
 $link-color: lighten(#308ca8, 20%)
 
 .message-label
@@ -11,6 +15,7 @@ $link-color: lighten(#308ca8, 20%)
 body 
   font-family: $font-family
   overflow-y: scroll
+  background-color: $background-color
 
   a
     color: $link-color
@@ -43,9 +48,9 @@ form
 
 header 
   padding: 20px 0 10px 0
+  margin: 0 0 10px 0
   width: 100%
   text-align: center
-  background-color: #FFFFFF
   a.logo 
     font-size: 34px
     border: none
@@ -54,11 +59,8 @@ header
 
     text-decoration: none
     &:hover
-      color: darken($logo-color,20%)
+      color: darken($logo-color,10%)
 
-
-article + article
-  margin-top: 60px
   
 .createButton
   width: 10%
@@ -72,30 +74,17 @@ article + article
     font-size: 20px
     background-color: #fcfcfc
 
+    &[disabled]
+      color: #cccccc
+      background-color: darken(#ffffff, 4%)
 
-article 
-  h1 
-    font-size: 28px
-    margin-bottom: 0px
-    color: rgb(62, 104, 173)
-  time 
-    display: block
-    color: #acacac
-    border-left: 2px solid #cccccc
-    font-size: 12px
-    padding-left: 14px
-    margin-left: 2px
-    margin-bottom: 20px
-  p 
-    margin: 0 0 10px 0
-    font-size: $article-main-font-size
-    line-height: $article-main-font-size + 8px
   
 .content 
   max-width: 800px
   text-align:left
   margin-left: auto
   margin-right: auto
+  padding: 0 2px
 
   input
     box-sizing: border-box
@@ -110,16 +99,17 @@ article
     
 
     li
-      padding-left: 2px
+      padding: 10px 6px
+      margin: 10px 0 14px 0
+      background-color: #ffffff
       min-height: 36px
       list-style-type: none
-      border-bottom: 1px dotted #cccccc
+      border: 1px solid #cccccc
+      border-radius: 2px
+      box-shadow: 0px 4px 8px -6px rgba(15,15,15,0.19);
 
       div
-
         width: 100%
-        // text-overflow: ellipsis
-        // overflow: hidden
         white-space: pre-wrap
         word-wrap: break-word
        

@@ -77,7 +77,7 @@ SearchBox = React.createClass
   render: ->
     <div>
       <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="thread title"/>
-      <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList} disabled={!this.state.logged_in}/>
+      <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList} disabled={!this.state.logged_in or this.state.textvalue==""}/>
       <MessageLabel status={this.state.messagelabel} isSignUp={!this.state.logged_in}/>
       <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
     </div>
