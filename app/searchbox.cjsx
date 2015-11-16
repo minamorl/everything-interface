@@ -77,7 +77,7 @@ SearchBox = React.createClass
   render: ->
     <div>
       <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="thread title"/>
-      <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList}/>
+      <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList} disabled={!this.state.logged_in}/>
       <MessageLabel status={this.state.messagelabel} isSignUp={!this.state.logged_in}/>
       <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
     </div>
@@ -106,26 +106,28 @@ CreateButton = React.createClass
   closeModal: ->
     this.setState
       modalIsOpen: false
-  addPost: ->
+  addPost: (e) ->
     $.post "/api/comment.json", {q: this.props.queryvalue, body: this.state.bodyvalue}, (data) =>
       if "error" in data
         console.log data.error
       this.props.onPost()
       this.closeModal()
+    this.preventDefault()
+
   eventChange: (e) ->
     this.setState
       bodyvalue: e.target.value
 
   render: ->
     <div className="createButton">
-      <button onClick={this.openModal}><span className="octicon octicon-comment"></span></button>
+      <button onClick={this.openModal} disabled={this.props.disabled}><span className="octicon octicon-comment"></span></button>
       <Modal 
         isOpen={this.state.modalIsOpen}
         onRequestClose={this.closeModal}
         style={customStyles} >
-        <form action="javascript:void(0)">
+        <form action="javascript:void(0)" onSubmit={this.addPost}>
           <textarea id="user-textbox" value={this.state.bodyvalue} onChange={this.eventChange} ></textarea>
-          <button onClick={this.addPost}>create</button>
+          <button>create</button>
         </form>
       </Modal>
     </div>
@@ -141,9 +143,12 @@ ListUI = React.createClass
     </ul>
 
 ListElement = React.createClass
-  linkClick: ->
+  linkClick: (e)->
     window.history.pushState(null, null, "#/thread/"+this.props.data.thread.name)
     this.props.search(this.props.data.thread.name)
+    
+    e.preventDefault()
+    e.stopPropagation()
 
   render:->
     <li>

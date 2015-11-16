@@ -10,14 +10,17 @@ LoginForm = React.createClass
     password: ""
     message: ""
 
-  login: ->
+  login: (e) ->
     $.post "/api/login.json", {username: this.state.username, password: this.state.password}, (data) =>
       this.setState
         message: data.results.message
 
       if data.results.message == "okay"
-        window.location.hash = "#"
+        window.location.hash = "#/thread/"
         
+    console.log "hey jude"
+    e.preventDefault()
+
   eventChange: (e) ->
     this.setState
       username: e.target.value
@@ -27,12 +30,10 @@ LoginForm = React.createClass
       password: e.target.value
 
   render: ->
-    <form action="javascript:void(0);">
+    <form onSubmit={this.login} autoComplete="on">
       <input value={this.state.username} onChange={this.eventChange} type="text" placeholder="username"/>
       <input value={this.state.password} onChange={this.passwordChange} type="password" placeholder="password"/>
-      <div>
-        <button onClick={this.login}>login</button>
-      </div>
+      <button>login</button>
       <div>message: {this.state.message}</div>
     </form>
 
