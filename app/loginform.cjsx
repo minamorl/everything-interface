@@ -34,7 +34,7 @@ LoginForm = React.createClass
       <input value={this.state.username} onChange={this.eventChange} type="text" placeholder="username"/>
       <input value={this.state.password} onChange={this.passwordChange} type="password" placeholder="password"/>
       <button>login</button>
-      <div>message: {this.state.message}</div>
+      <div>{this.state.message}</div>
     </form>
 
 module.exports = LoginForm

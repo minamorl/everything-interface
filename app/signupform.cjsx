@@ -33,7 +33,7 @@ SignupForm = React.createClass
       <div>
         <button onClick={this.signup}>signup</button>
       </div>
-      <div>message: {this.state.message}</div>
+      <div>{this.state.message}</div>
     </form>
 
 module.exports = SignupForm
