@@ -83,7 +83,10 @@ SearchBox = React.createClass
       <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList} disabled={!this.state.logged_in or this.state.textvalue==""}/>
       <MessageLabel status={this.state.messagelabel} isSignUp={!this.state.logged_in}/>
       <Index hidden={this.state.textvalue!=""}/>
-      <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
+      {
+        if this.state.textvalue != ""
+          <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
+      }
     </div>
 
 MessageLabel = React.createClass
