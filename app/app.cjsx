@@ -7,6 +7,7 @@ SearchBox = require './searchbox.cjsx'
 LoginForm = require './loginform.cjsx'
 LogoutForm = require './logout.cjsx'
 SignupForm = require './signupform.cjsx'
+Index = require './index.cjsx'
 
 init = ->
   app = document.getElementById 'searchbox'
@@ -44,7 +45,7 @@ router = (app) ->
     window.history.pushState(null, null, "#/thread/")
     ReactDOM.unmountComponentAtNode app
     ReactDOM.render(
-      <SearchBox query=""/>, app
+      <SearchBox query="" />, app
     )
 
 $(document).ready ->

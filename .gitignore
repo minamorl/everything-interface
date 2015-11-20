@@ -4,3 +4,5 @@ npm-debug.log
 /node_modules/
 /lib/
 dist/
+.plans.py
+__pycache__/

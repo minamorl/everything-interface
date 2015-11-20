@@ -24,6 +24,9 @@ body
       color: darken($link-color, 15%)
       
 
+.hidden
+  visibility: hidden
+
 form 
   textarea
     width: 100%
@@ -84,6 +87,10 @@ header
   margin-right: auto
   padding: 0 2px
 
+  h1
+    color: #777777
+    font-size: 24px
+
   input
     box-sizing: border-box
     width: 90%
@@ -92,7 +99,20 @@ header
     border-radius: 5px
     font-size: 20px
 
-  ul
+  ul.index
+    padding: 0 
+    
+    li
+      padding: 12px 8px
+      margin: 6px 0 0 0
+      background-color: #ffffff
+      min-height: 20px
+      list-style-type: none
+      border: 1px solid #ececec
+      border-radius: 2px
+      box-shadow: 0px 4px 8px -6px rgba(15,15,15,0.08);
+
+  ul.thread
     padding: 0 
     
 

@@ -2,6 +2,8 @@ React    = require 'react'
 $        = require 'jquery'
 _        = require 'lodash'
 Modal    = require 'react-modal'
+Index    = require './index.cjsx'
+ListUI   = require './listui.cjsx'
 
 customStyles = {
   overlay : {
@@ -34,24 +36,25 @@ customStyles = {
 SearchBox = React.createClass
   getInitialState: ->
     textvalue: ""
-    messagelabel:"messages"
+    messagelabel:""
     results: []
     logged_in: false
+
   componentDidMount: ->
     this.setState
       textvalue: this.props.query
     $.getJSON "/api/thread.json", {q: this.props.query}, (data) =>
       this.setState
         results: data.results
-
-      if _.isNull(data.results[0].auth.name)
+    $.getJSON "/api/auth.json", (data) =>
+      if _.isNull(data.results.auth.name)
         this.setState
           messagelabel: ""
           logged_in: false
 
       else
         this.setState
-          messagelabel: "You are logged in as @" + data.results[0].auth.name
+          messagelabel: "You are logged in as @" + data.results.auth.name
           logged_in: true
 
       
@@ -79,6 +82,7 @@ SearchBox = React.createClass
       <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="thread title"/>
       <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList} disabled={!this.state.logged_in or this.state.textvalue==""}/>
       <MessageLabel status={this.state.messagelabel} isSignUp={!this.state.logged_in}/>
+      <Index hidden={this.state.textvalue!=""}/>
       <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
     </div>
 
@@ -131,34 +135,5 @@ CreateButton = React.createClass
         </form>
       </Modal>
     </div>
-
-ListUI = React.createClass
-  
-  render: ->
-    <ul>
-      {
-        for r, index in this.props.results
-          <ListElement key={index} data={r} search={this.props.search}/>
-      }
-    </ul>
-
-ListElement = React.createClass
-  linkClick: (e)->
-    window.history.pushState(null, null, "#/thread/"+this.props.data.thread.name)
-    this.props.search(this.props.data.thread.name)
-    
-    e.preventDefault()
-    e.stopPropagation()
-
-  render:->
-    <li>
-      <div>{this.props.data.body}</div>
-      <div className="detail">
-        <div className="commit-author">
-          <a href="javascript:void(0)" onClick={this.linkClick}>{this.props.data.thread.name}</a>
-        </div>
-        <div className="project">{this.props.data.author.name}</div>
-      </div>
-    </li>
 
 module.exports = SearchBox
