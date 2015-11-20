@@ -16,6 +16,7 @@ Index = React.createClass
     if !this.props.hidden
       return <div>
         <h1>最近投稿されたスレッド</h1>
+        <a href="#/recent">全部読む</a>
         <ul className="index">
         {
           for r, index in this.state.results

@@ -8,6 +8,7 @@ LoginForm = require './loginform.cjsx'
 LogoutForm = require './logout.cjsx'
 SignupForm = require './signupform.cjsx'
 Index = require './index.cjsx'
+Recent = require './recent.cjsx'
 
 init = ->
   app = document.getElementById 'searchbox'
@@ -36,10 +37,14 @@ router = (app) ->
     ReactDOM.render(
       <SignupForm />, app
     )
-  else if startswith(location.hash, "#/thread/")
+  else if startswith(window.location.hash, "#/thread/")
     ReactDOM.unmountComponentAtNode app
     ReactDOM.render(
-      <SearchBox query={window.decodeURI(window.location.hash.slice(9))}/>, app
+      <SearchBox query={window.decodeURI(window.location.hash.slice(9))}/>, app).forceUpdate()
+    
+  else if window.location.hash == "#/recent"
+    ReactDOM.render(
+      <Recent />, app
     )
   else
     window.history.pushState(null, null, "#/thread/")
