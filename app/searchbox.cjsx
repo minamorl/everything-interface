@@ -86,6 +86,8 @@ SearchBox = React.createClass
       {
         if this.state.textvalue != ""
           <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
+        else
+          <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} className="hidden"/>
       }
     </div>
 
