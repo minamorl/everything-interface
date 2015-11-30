@@ -9,7 +9,6 @@ let SearchBox = require('./searchbox.cjsx')
 let LoginForm = require('./loginform.jsx')
 let LogoutForm = require('./logout.jsx')
 let SignupForm = require('./signupform.cjsx')
-let Index = require('./index.jsx')
 let Recent = require('./recent.jsx')
 
 let init = () => {

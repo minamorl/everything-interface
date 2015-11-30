@@ -4,7 +4,7 @@ let React    = require('react')
 let $        = require('jquery')
 let _        = require('lodash')
 let Modal    = require('react-modal')
-let Index    = require('./index.jsx')
+let Index    = require('./index.cjsx')
 let ListUI   = require('./components/listui.cjsx')
 let CreateButton = require('./components/create-button.cjsx')
 
@@ -81,15 +81,7 @@ class SearchBox extends React.Component {
         <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="thread title"/>
         <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList} disabled={!this.state.logged_in || this.state.textvalue==""}/>
         <MessageLabel status={this.state.messagelabel} isSignUp={!this.state.logged_in}/>
-        <Index hidden={this.state.textvalue!=""}/>
-        { () => {
-            if (this.state.textvalue !== "") {
-              return <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
-            } else {
-              return <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} className="hidden"/>
-            }
-          }
-        }
+         <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
       </div>
   }
 }
