@@ -8,7 +8,7 @@ let Modal    = require('react-modal')
 let SearchBox = require('./searchbox.jsx')
 let LoginForm = require('./loginform.jsx')
 let LogoutForm = require('./logout.jsx')
-let SignupForm = require('./signupform.cjsx')
+let SignupForm = require('./signupform.jsx')
 let Recent = require('./recent.jsx')
 
 let init = () => {
