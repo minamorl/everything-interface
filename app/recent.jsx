@@ -6,7 +6,7 @@ let _        = require('lodash')
 let Modal    = require('react-modal')
 let Index    = require('./index.jsx')
 let ListUI   = require('./components/listui.jsx')
-let CreateButton = require('./components/create-button.cjsx')
+let CreateButton = require('./components/create-button.jsx')
 
 
 class SearchBox extends React.Component {
@@ -79,7 +79,7 @@ class SearchBox extends React.Component {
   render () {
     return <div>
         <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="thread title"/>
-        <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList} disabled={!this.state.logged_in || this.state.textvalue==""}/>
+        <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList} disabled="always"/>
         <MessageLabel status={this.state.messagelabel} isSignUp={!this.state.logged_in}/>
          <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} />
       </div>
