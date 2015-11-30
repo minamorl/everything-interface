@@ -6,7 +6,7 @@ let _        = require('lodash')
 let ReactDOM = require('react-dom')
 let Modal    = require('react-modal')
 let SearchBox = require('./searchbox.cjsx')
-let LoginForm = require('./loginform.cjsx')
+let LoginForm = require('./loginform.jsx')
 let LogoutForm = require('./logout.cjsx')
 let SignupForm = require('./signupform.cjsx')
 let Index = require('./index.jsx')
@@ -23,7 +23,7 @@ let init = () => {
 }
 
 $(window).on('hashchange', () => {
-  app = document.getElementById('searchbox')
+  let app = document.getElementById('searchbox')
   router(app)
 })
 

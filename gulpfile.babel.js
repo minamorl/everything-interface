@@ -40,31 +40,31 @@ gulp.task('build:misc', () => {
 gulp.task('compress', ['compress:html', 'compress:css']);
 
 gulp.task('compress:html', () => {
-  gulp.src('dist/**/*.html', {base: "."})
+  return gulp.src('dist/**/*.html', {base: "."})
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('.'));
 });
 
 gulp.task('compress:css', () => {
-  gulp.src('dist/**/*.css', {base: "."})
+  return gulp.src('dist/**/*.css', {base: "."})
     .pipe(cssmin())
     .pipe(gulp.dest('.'));
 });
 
 gulp.task('bower', () => {
-  bower();
+  return bower();
 });
 
 gulp.task('default', () => {
-  runSequence('clean', 'bower', 'build', 'webpack', 'serve');
+  return runSequence('clean', 'bower', 'build', 'webpack', 'serve');
 });
 
 gulp.task('deploy', () => {
-  runSequence('clean', 'bower', 'build', 'compress', 'webpack:prod');
+  return runSequence('clean', 'bower', 'build', 'compress', 'webpack:prod');
 });
 
 let _webpack = (config, callback) => {
-  webpack(config, (err, stats) => {
+  return webpack(config, (err, stats) => {
     if(err)
       throw new gutil.PluginError("webpack:build", err)
     gutil.log("[webpack:build]", stats.toString({
@@ -77,24 +77,22 @@ let _webpack = (config, callback) => {
 
 gulp.task('webpack', (callback) => {
   let myConfig = Object.create(webpackConfig);
-  _webpack(myConfig, callback);
+  return _webpack(myConfig, callback);
 });
 
 gulp.task('webpack:prod', (callback) => {
   let myConfig = Object.create(webpackProd);
-  _webpack(myConfig, callback);
+  return _webpack(myConfig, callback);
 });
 
-gulp.task('build', () => {
-  runSequence('build:misc',  'build:index')
-});
+gulp.task('build', ['build:misc', 'build:index'])
 
 gulp.task('build:index', () => {
   let defaultLayout = {
     layout: "templates/index.jade"
   };
 
-  gulp.src("./templates/index.jade")
+  return gulp.src("./templates/index.jade")
     .pipe(jade())
     .pipe(gulp.dest('./dist'))
 });
@@ -106,7 +104,7 @@ gulp.task('serve', () => {
   gulp.watch(['./app/**/*',  './sass/**/*.sass'], () => {
     runSequence('webpack');
   });
-  gulp.src('dist')
+  return gulp.src('dist')
     .pipe(webserver({
       livereload: true,
       proxies:[{
