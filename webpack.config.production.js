@@ -16,7 +16,7 @@ module.exports = {
             { test: /\.css$/, loader: "style-loader!css-loader" },
             { test: /\.(gif|png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
             { test: /\.sass$/, loader: "style!css!sass?indentedSyntax" },
-            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+            { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: "babel-loader", query: { presets: ['react', 'es2015'] }}
         ]
     },
     resolve: {
