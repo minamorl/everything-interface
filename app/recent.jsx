@@ -5,7 +5,7 @@ let $        = require('jquery')
 let _        = require('lodash')
 let Modal    = require('react-modal')
 let Index    = require('./index.jsx')
-let ListUI   = require('./components/listui.cjsx')
+let ListUI   = require('./components/listui.jsx')
 let CreateButton = require('./components/create-button.cjsx')
 
 
