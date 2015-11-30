@@ -14,19 +14,12 @@ ListUI = React.createClass
     </ul>
 
 ListElement = React.createClass
-  linkClick: (e)->
-    window.history.pushState(null, null, "#/thread/"+this.props.data.thread.name)
-    this.props.search(this.props.data.thread.name)
-    
-    e.preventDefault()
-    e.stopPropagation()
-
   render:->
     <li>
       <div>{this.props.data.body}</div>
       <div className="detail">
         <div className="commit-author">
-          <a href="javascript:void(0)" onClick={this.linkClick}>{this.props.data.thread.name}</a>
+          <a href={"#/thread/" + window.encodeURI(this.props.data.thread.name)}>{this.props.data.thread.name}</a>
         </div>
         <div className="project">{this.props.data.author.name}</div>
       </div>
