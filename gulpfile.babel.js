@@ -28,13 +28,12 @@ let webpackProd   = require("./webpack.config.production");
 let cheerio       = require('cheerio');
 let striptags     = require('striptags');
 
-
 gulp.task('clean', () => {
-  del(['.tmp', 'dist']);
+  return del(['.tmp', 'dist']);
 })
 
 gulp.task('build:misc', () => {
-  gulp.src(['favicon/**/*', '*.html', 'css/**/*', 'js/**/*'], {base: "."})
+  return gulp.src(['favicon/**/*', '*.html', 'css/**/*', 'js/**/*'], {base: "."})
     .pipe(gulp.dest('dist'))
 });
 
