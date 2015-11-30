@@ -2,7 +2,7 @@ React    = require 'react'
 $        = require 'jquery'
 _        = require 'lodash'
 Modal    = require 'react-modal'
-Index    = require './index.cjsx'
+Index    = require './index.jsx'
 ListUI   = require './components/listui.cjsx'
 CreateButton = require './components/create-button.cjsx'
 

@@ -9,7 +9,7 @@ let SearchBox = require('./searchbox.cjsx')
 let LoginForm = require('./loginform.cjsx')
 let LogoutForm = require('./logout.cjsx')
 let SignupForm = require('./signupform.cjsx')
-let Index = require('./index.cjsx')
+let Index = require('./index.jsx')
 let Recent = require('./recent.cjsx')
 
 let init = () => {
@@ -31,7 +31,7 @@ let startswith = (str, target) => {
   return str.substring(0,target.length) === target
 }
 
-router = (app) => {
+let router = (app) => {
   if(window.location.hash === "#/login")
     ReactDOM.render(
       <LoginForm />, app

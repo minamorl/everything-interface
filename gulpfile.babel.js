@@ -86,7 +86,9 @@ gulp.task('webpack:prod', (callback) => {
   _webpack(myConfig, callback);
 });
 
-gulp.task('build', ['build:misc',  'build:index']);
+gulp.task('build', () => {
+  runSequence('build:misc',  'build:index')
+});
 
 gulp.task('build:index', () => {
   let defaultLayout = {
