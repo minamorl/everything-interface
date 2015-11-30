@@ -10,7 +10,7 @@ let LoginForm = require('./loginform.jsx')
 let LogoutForm = require('./logout.cjsx')
 let SignupForm = require('./signupform.cjsx')
 let Index = require('./index.jsx')
-let Recent = require('./recent.cjsx')
+let Recent = require('./recent.jsx')
 
 let init = () => {
   let app = document.getElementById('searchbox')
