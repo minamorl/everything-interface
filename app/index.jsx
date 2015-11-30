@@ -8,10 +8,10 @@ let Modal    = require('react-modal')
 class Index extends React.Component {
   constructor() {
     super()
-    this.state = 
-      {
+    this.state = {
         results: []
       }
+    this.componentDidMount = this.componentDidMount.bind(this)
   }
 
   componentDidMount() {
