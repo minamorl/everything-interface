@@ -18,6 +18,7 @@ class Thread extends React.Component {
       messagelabel:"",
       results: [],
       logged_in: false,
+      page: 1,
     }
     this.componentDidMount = this.componentDidMount.bind(this)
     this.eventChange = this.eventChange.bind(this)
@@ -36,11 +37,7 @@ class Thread extends React.Component {
         })
       })
     } else {
-      $.getJSON("/api/thread.json", {q: this.props.query}, (data) => {
-        this.setState({
-          results: data.results
-        })
-      })
+      this.updateList()
     }
     $.getJSON("/api/auth.json", (data) => {
       if(_.isNull(data.results.auth.name))
@@ -55,27 +52,38 @@ class Thread extends React.Component {
           logged_in: true,
         })
     })
+
+    $(window).scroll(() => {
+       if($(window).scrollTop() + $(window).height() > $(document).height() - 50) {
+         this.pagination()
+       }
+    })
   }
 
   eventChange (e) {
     this.setState({
       textvalue: e.target.value
     })
-    $.getJSON("/api/thread.json", {q: e.target.value}, (data) => {
-      this.setState({
-        results: data.results
-      })
-    })
+    this.updateList()
   }
 
   updateList (){
-    $.getJSON("/api/thread.json", {q: this.state.textvalue}, (data) => {
+    $.getJSON("/api/thread.json", {q: this.props.query}, (data) => {
       this.setState({
-        results: data.results
+        results: data.results,
       })
     })
   }
     
+  pagination () {
+    $.getJSON("/api/thread.json", {q: this.props.query, page: this.state.page + 1}, (data) => {
+      this.setState({
+        results: this.state.results.concat(data.results),
+        page: this.state.page + 1,
+      })
+    })
+  }
+
   search (keyword) {
     $.getJSON("/api/thread.json", {q: keyword}, (data) => {
       this.setState({
