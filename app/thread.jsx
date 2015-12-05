@@ -54,8 +54,9 @@ class Thread extends React.Component {
         })
     })
 
+    $(window).unbind("scroll")
     $(window).scroll(() => {
-       if($(window).scrollTop() + $(window).height() > $(document).height() - 50) {
+       if($(window).scrollTop() + $(window).height() > $(document).height()) {
          this.pagination()
        }
     })
