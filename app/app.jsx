@@ -9,7 +9,6 @@ let Thread = require('./thread.jsx')
 let LoginForm = require('./loginform.jsx')
 let LogoutForm = require('./logout.jsx')
 let SignupForm = require('./signupform.jsx')
-let Recent = require('./recent.jsx')
 
 let init = () => {
   let app = document.getElementById('app')
@@ -47,11 +46,12 @@ let router = (app) => {
     ReactDOM.unmountComponentAtNode(app)
     ReactDOM.render(
       <Thread query={window.decodeURI(window.location.hash.slice(9))}/>, app).forceUpdate()
-  } else if(window.location.hash === "#/recent")
+  } else if(window.location.hash === "#/recent") {
+    ReactDOM.unmountComponentAtNode(app)
     ReactDOM.render(
-      <Recent />, app
+      <Thread recent={true} query="" />, app
     )
-  else {
+  } else {
     window.history.pushState(null, null, "#/thread/")
     ReactDOM.unmountComponentAtNode(app)
     ReactDOM.render(
