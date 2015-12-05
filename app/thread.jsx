@@ -56,7 +56,7 @@ class Thread extends React.Component {
 
     $(window).unbind("scroll")
     $(window).scroll(() => {
-       if($(window).scrollTop() + $(window).height() > $(document).height() - 50) {
+       if($(window).scrollTop() + $(window).height() > $(document).height() - 20) {
          this.pagination()
        }
     })
@@ -79,10 +79,12 @@ class Thread extends React.Component {
   }
     
   pagination () {
-    $.getJSON("/api/thread.json", {q: this.state.textvalue, page: this.state.page + 1}, (data) => {
+    this.setState({
+      page: this.state.page + 1,
+    })
+    $.getJSON("/api/thread.json", {q: this.state.textvalue, page: this.state.page}, (data) => {
       this.setState({
         results: this.state.results.concat(data.results),
-        page: this.state.page + 1,
       })
     })
   }
