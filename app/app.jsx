@@ -5,7 +5,7 @@ let $        = require('jquery')
 let _        = require('lodash')
 let ReactDOM = require('react-dom')
 let Modal    = require('react-modal')
-let SearchBox = require('./searchbox.jsx')
+let Thread = require('./thread.jsx')
 let LoginForm = require('./loginform.jsx')
 let LogoutForm = require('./logout.jsx')
 let SignupForm = require('./signupform.jsx')
@@ -46,7 +46,7 @@ let router = (app) => {
   else if(startswith(window.location.hash, "#/thread/")) {
     ReactDOM.unmountComponentAtNode(app)
     ReactDOM.render(
-      <SearchBox query={window.decodeURI(window.location.hash.slice(9))}/>, app).forceUpdate()
+      <Thread query={window.decodeURI(window.location.hash.slice(9))}/>, app).forceUpdate()
   } else if(window.location.hash === "#/recent")
     ReactDOM.render(
       <Recent />, app
@@ -55,7 +55,7 @@ let router = (app) => {
     window.history.pushState(null, null, "#/thread/")
     ReactDOM.unmountComponentAtNode(app)
     ReactDOM.render(
-      <SearchBox query="" />, app
+      <Thread query="" />, app
     )
   }
 };

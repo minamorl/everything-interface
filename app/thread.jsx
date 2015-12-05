@@ -9,7 +9,7 @@ let ListUI   = require('./components/listui.jsx')
 let CreateButton = require('./components/create-button.jsx')
 
 
-class SearchBox extends React.Component {
+class Thread extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -101,4 +101,4 @@ class MessageLabel extends React.Component {
   }
 }
 
-module.exports = SearchBox
+module.exports = Thread
