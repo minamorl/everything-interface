@@ -12,7 +12,7 @@ let SignupForm = require('./signupform.jsx')
 let Recent = require('./recent.jsx')
 
 let init = () => {
-  let app = document.getElementById('searchbox')
+  let app = document.getElementById('app')
   $(".logo").click(() => {
     window.location.href = "#/thread/"
   })
@@ -22,7 +22,7 @@ let init = () => {
 }
 
 $(window).on('hashchange', () => {
-  let app = document.getElementById('searchbox')
+  let app = document.getElementById('app')
   router(app)
 })
 
