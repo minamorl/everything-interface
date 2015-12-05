@@ -62,13 +62,14 @@ class Thread extends React.Component {
 
   eventChange (e) {
     this.setState({
-      textvalue: e.target.value
+      textvalue: e.target.value,
+      page: 1,
     })
     this.updateList()
   }
 
   updateList (){
-    $.getJSON("/api/thread.json", {q: this.props.query}, (data) => {
+    $.getJSON("/api/thread.json", {q: this.state.textvalue}, (data) => {
       this.setState({
         results: data.results,
       })
@@ -76,7 +77,7 @@ class Thread extends React.Component {
   }
     
   pagination () {
-    $.getJSON("/api/thread.json", {q: this.props.query, page: this.state.page + 1}, (data) => {
+    $.getJSON("/api/thread.json", {q: this.state.textvalue, page: this.state.page + 1}, (data) => {
       this.setState({
         results: this.state.results.concat(data.results),
         page: this.state.page + 1,
