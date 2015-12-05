@@ -33,11 +33,12 @@ class Thread extends React.Component {
     if(this.props.recent) {
       $.getJSON("/api/recent.json", {q: this.props.query}, (data) => {
         this.setState({
-          results: data.results
+          results: data.results,
+          textvalue: this.props.query,
         })
       })
     } else {
-      this.updateList()
+      this.updateList(this.props.query)
     }
     $.getJSON("/api/auth.json", (data) => {
       if(_.isNull(data.results.auth.name))
@@ -65,11 +66,11 @@ class Thread extends React.Component {
       textvalue: e.target.value,
       page: 1,
     })
-    this.updateList()
+    this.updateList(e.target.value)
   }
 
-  updateList (){
-    $.getJSON("/api/thread.json", {q: this.state.textvalue}, (data) => {
+  updateList (query){
+    $.getJSON("/api/thread.json", {q: query}, (data) => {
       this.setState({
         results: data.results,
       })
@@ -101,7 +102,7 @@ class Thread extends React.Component {
 
     return <div>
       <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="thread title"/>
-      <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList} disabled={!this.state.logged_in || this.state.textvalue===""}/>
+      <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList.bind(undefined, this.state.textvalue)} disabled={!this.state.logged_in || this.state.textvalue===""}/>
       <MessageLabel status={this.state.messagelabel} isSignUp={!this.state.logged_in}/>
       {index}
       {listui}
