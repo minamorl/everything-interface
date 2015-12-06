@@ -19,6 +19,7 @@ class Thread extends React.Component {
       results: [],
       logged_in: false,
       page: 1,
+      endpoint: "/api/thread.json",
     }
     this.componentDidMount = this.componentDidMount.bind(this)
     this.eventChange = this.eventChange.bind(this)
@@ -31,6 +32,9 @@ class Thread extends React.Component {
       textvalue: this.props.query
     })
     if(this.props.recent) {
+      this.setState({
+        endpoint: "/api/recent.json",
+      })
       $.getJSON("/api/recent.json", {q: this.props.query}, (data) => {
         this.setState({
           results: data.results,
@@ -82,7 +86,7 @@ class Thread extends React.Component {
     this.setState({
       page: this.state.page + 1,
     })
-    $.getJSON("/api/thread.json", {q: this.state.textvalue, page: this.state.page}, (data) => {
+    $.getJSON(this.state.endpoint, {q: this.state.textvalue, page: this.state.page}, (data) => {
       this.setState({
         results: this.state.results.concat(data.results),
       })
