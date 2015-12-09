@@ -117,7 +117,7 @@ class Thread extends React.Component {
         let index = this.props.recent ? null : <Index hidden={this.state.textvalue!=""}/>
 
         return <div>
-      <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="thread title"/>
+      <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="スレタイ"/>
       <CreateButton queryvalue={this.state.textvalue} onPost={this.updateList.bind(undefined, this.state.textvalue)} disabled={!this.state.logged_in || this.state.textvalue===""}/>
       <MessageLabel status={this.state.messagelabel} isSignUp={!this.state.logged_in}/>
       {index}
