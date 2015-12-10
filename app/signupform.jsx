@@ -3,6 +3,7 @@
 let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
+let endpoints = require('./lib/endpoints.js')
 
 class SignupForm extends React.Component {
 
@@ -19,7 +20,7 @@ class SignupForm extends React.Component {
     }
 
     signup() {
-        $.post("/api/signup.json", {
+        $.post(endpoints.API_SIGNUP, {
             username: this.state.username,
             password: this.state.password
         }, (data) => {

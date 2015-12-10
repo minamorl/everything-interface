@@ -8,6 +8,7 @@ let Index = require('./index.jsx')
 let ListUI = require('./components/listui.jsx')
 let MessageLabel = require('./components/message-label.jsx')
 let CreateButton = require('./components/create-button.jsx')
+let endpoints = require('./lib/endpoints.js')
 
 
 class Thread extends React.Component {
@@ -19,7 +20,7 @@ class Thread extends React.Component {
             results: [],
             logged_in: false,
             page: 1,
-            endpoint: "/api/thread.json",
+            endpoint: endpoints.API_THREAD,
         }
         this.componentDidMount = this.componentDidMount.bind(this)
         this.eventChange = this.eventChange.bind(this)
@@ -33,9 +34,9 @@ class Thread extends React.Component {
         })
         if (this.props.recent) {
             this.setState({
-                endpoint: "/api/recent.json",
+                endpoint: endpoints.API_RECENT,
             })
-            $.getJSON("/api/recent.json", {
+            $.getJSON(endpoints.API_RECENT, {
                 q: this.props.query
             }, (data) => {
                 this.setState({
@@ -46,7 +47,7 @@ class Thread extends React.Component {
         } else {
             this.updateList(this.props.query)
         }
-        $.getJSON("/api/auth.json", (data) => {
+        $.getJSON(endpoints.API_AUTH, (data) => {
             if (_.isNull(data.results.auth.name))
                 this.setState({
                     messagelabel: "",
@@ -77,7 +78,7 @@ class Thread extends React.Component {
     }
 
     updateList(query) {
-        $.getJSON("/api/thread.json", {
+        $.getJSON(endpoints.API_THREAD, {
             q: query
         }, (data) => {
             this.setState({
@@ -101,7 +102,7 @@ class Thread extends React.Component {
     }
 
     search(keyword) {
-        $.getJSON("/api/thread.json", {
+        $.getJSON(endpoints.API_THREAD, {
             q: keyword
         }, (data) => {
             this.setState({

@@ -3,11 +3,12 @@
 let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
+let endpoints = require('./lib/endpoints.js')
 
 class LogoutForm extends React.Component {
 
     componentDidMount() {
-        $.getJSON("/api/logout.json")
+        $.getJSON(endpoints.API_LOGOUT)
     }
 
     render() {

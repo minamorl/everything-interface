@@ -4,6 +4,7 @@ let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
 let Modal = require('react-modal')
+let endpoints = require('./lib/endpoints.js')
 
 class LoginForm extends React.Component {
 
@@ -20,7 +21,7 @@ class LoginForm extends React.Component {
     }
 
     login(e) {
-        $.post("/api/login.json", {
+        $.post(endpoints.API_LOGIN, {
             username: this.state.username,
             password: this.state.password
         }, (data) => {
