@@ -31,7 +31,11 @@ module.exports = {
             loader: "babel-loader",
             query: {
                 presets: ['react', 'es2015']
-            }
+            },
+            exclude: [
+              /node_modules/, 
+              /bower_components/
+            ],
         }]
     },
     resolve: {

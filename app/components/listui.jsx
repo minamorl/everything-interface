@@ -28,10 +28,11 @@ class ListUI extends React.Component {
 
 class ListElement extends React.Component {
     render() {
+        let marked = require("marked")
         let linked = () => {
 
             return {
-                __html: autolinker.link(sanitizer.escape(this.props.data.body))
+              __html: marked(autolinker.link(marked(this.props.data.body, {sanitize: true})))
             }
         }
         return <li>
