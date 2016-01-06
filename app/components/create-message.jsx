@@ -23,6 +23,7 @@ class CreateMessage extends React.Component {
         }, (data) => {
             window.history.pushState(null, null, "#/thread/" + this.props.queryvalue)
             this.props.updateList(this.props.search)
+            this.state.bodyvalue = ""
         })
         e.preventDefault()
     }
@@ -39,8 +40,7 @@ class CreateMessage extends React.Component {
             <textarea onChange={this.onChange} value={this.state.bodyvalue}/>
             <input type="submit" value="投稿" />
           </form>
-
-    </li>
+        </li>
     }
 }
 
