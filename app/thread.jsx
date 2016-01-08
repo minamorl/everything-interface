@@ -114,7 +114,7 @@ class Thread extends React.Component {
 
     render() {
 
-        let listui = <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} updateList={this.updateList}/>
+        let listui = <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} updateList={this.updateList} logged_in={this.state.logged_in}/>
         let index = this.props.recent ? null : <Index hidden={this.state.textvalue!=""}/>
 
         return <div>

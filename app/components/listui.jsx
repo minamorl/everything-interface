@@ -16,13 +16,12 @@ class ListUI extends React.Component {
             lists.push(<ListElement key={i} data={r} search={this.props.search}/>)
         })
         let createmessage
-        if(this.props.filterWord !== "")
-          createmessage = <CreateMessage search={this.props.filterWord} updateList={this.props.updateList}/>
+        if(this.props.filterWord !== "" && this.props.logged_in)
+          createmessage = <CreateMessage search={this.props.filterWord} updateList={this.props.updateList} />
         return <ul className="thread">
-        {createmessage}
-          
-      {lists }
-    </ul>
+          {createmessage}
+          {lists}
+        </ul>
     }
 }
 
