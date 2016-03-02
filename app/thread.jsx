@@ -4,7 +4,7 @@ let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
 
-import Index from './index.jsx'
+import Index from './components/index.jsx'
 import ListUI from './components/listui.jsx'
 import MessageLabel from './components/message-label.jsx'
 
