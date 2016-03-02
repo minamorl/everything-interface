@@ -6,7 +6,7 @@ let _ = require('lodash')
 let Modal = require('react-modal')
 let endpoints = require('./lib/endpoints.js')
 
-class LoginForm extends React.Component {
+export default class LoginForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -56,5 +56,3 @@ class LoginForm extends React.Component {
     </form>
     }
 }
-
-module.exports = LoginForm

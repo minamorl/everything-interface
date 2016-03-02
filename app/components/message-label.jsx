@@ -4,7 +4,7 @@ let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
 
-class MessageLabel extends React.Component {
+export default class MessageLabel extends React.Component {
     render() {
         if (!this.props.isSignUp) {
             return <div className="message-label">
@@ -18,5 +18,3 @@ class MessageLabel extends React.Component {
         }
     }
 }
-
-module.exports = MessageLabel

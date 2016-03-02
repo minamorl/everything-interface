@@ -4,13 +4,15 @@ let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
 let Modal = require('react-modal')
-let Index = require('./index.jsx')
-let ListUI = require('./components/listui.jsx')
-let MessageLabel = require('./components/message-label.jsx')
+
+import Index from './index.jsx'
+import ListUI from './components/listui.jsx'
+import MessageLabel from './components/message-label.jsx'
+
 let endpoints = require('./lib/endpoints.js')
 
 
-class Thread extends React.Component {
+export default class Thread extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -124,5 +126,3 @@ class Thread extends React.Component {
     </div>
     }
 }
-
-module.exports = Thread

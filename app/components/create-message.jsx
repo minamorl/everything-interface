@@ -5,7 +5,7 @@ let $ = require('jquery')
 let _ = require('lodash')
 let endpoints = require('../lib/endpoints.js')
 
-class CreateMessage extends React.Component {
+export default class CreateMessage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -43,5 +43,3 @@ class CreateMessage extends React.Component {
         </li>
     }
 }
-
-module.exports = CreateMessage

@@ -9,7 +9,7 @@ let sanitizer = require('sanitizer')
 
 let CreateMessage= require('./create-message.jsx')
 
-class ListUI extends React.Component {
+export default class ListUI extends React.Component {
     render() {
         let lists = []
         this.props.results.forEach((r, i) => {
@@ -45,5 +45,3 @@ class ListElement extends React.Component {
     </li>
     }
 }
-
-module.exports = ListUI

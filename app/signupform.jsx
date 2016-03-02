@@ -5,7 +5,7 @@ let $ = require('jquery')
 let _ = require('lodash')
 let endpoints = require('./lib/endpoints.js')
 
-class SignupForm extends React.Component {
+export default class SignupForm extends React.Component {
 
     constructor(props) {
         super(props)
@@ -55,4 +55,3 @@ class SignupForm extends React.Component {
     </form>
     }
 }
-module.exports = SignupForm

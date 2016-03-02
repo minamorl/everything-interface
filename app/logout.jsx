@@ -5,7 +5,7 @@ let $ = require('jquery')
 let _ = require('lodash')
 let endpoints = require('./lib/endpoints.js')
 
-class LogoutForm extends React.Component {
+export default class LogoutForm extends React.Component {
 
     componentDidMount() {
         $.getJSON(endpoints.API_LOGOUT)
@@ -18,5 +18,3 @@ class LogoutForm extends React.Component {
     </div>
     }
 }
-
-module.exports = LogoutForm

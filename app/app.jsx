@@ -5,10 +5,11 @@ let $ = require('jquery')
 let _ = require('lodash')
 let ReactDOM = require('react-dom')
 let Modal = require('react-modal')
-let Thread = require('./thread.jsx')
-let LoginForm = require('./loginform.jsx')
-let LogoutForm = require('./logout.jsx')
-let SignupForm = require('./signupform.jsx')
+
+import Thread from './thread.jsx'
+import LoginForm from './loginform.jsx'
+import LogoutForm from './logout.jsx'
+import SignupForm from './signupform.jsx'
 
 let init = () => {
     let app = document.getElementById('app')
