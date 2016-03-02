@@ -7,7 +7,6 @@ let Modal = require('react-modal')
 let Index = require('./index.jsx')
 let ListUI = require('./components/listui.jsx')
 let MessageLabel = require('./components/message-label.jsx')
-let CreateButton = require('./components/create-button.jsx')
 let endpoints = require('./lib/endpoints.js')
 
 
