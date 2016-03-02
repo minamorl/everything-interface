@@ -3,7 +3,6 @@
 let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
-let Modal = require('react-modal')
 
 class Index extends React.Component {
     constructor(props) {

@@ -4,7 +4,6 @@ let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
 let ReactDOM = require('react-dom')
-let Modal = require('react-modal')
 
 import Thread from './thread.jsx'
 import LoginForm from './loginform.jsx'
@@ -17,7 +16,6 @@ let init = () => {
         window.location.href = "#/thread/"
     })
 
-    Modal.setAppElement(app)
     router(app)
 }
 

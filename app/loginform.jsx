@@ -3,7 +3,6 @@
 let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
-let Modal = require('react-modal')
 let endpoints = require('./lib/endpoints.js')
 
 export default class LoginForm extends React.Component {

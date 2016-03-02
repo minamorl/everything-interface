@@ -3,7 +3,6 @@
 let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
-let Modal = require('react-modal')
 
 import Index from './index.jsx'
 import ListUI from './components/listui.jsx'
