@@ -7,7 +7,7 @@ let _ = require('lodash')
 let autolinker = require("autolinker")
 let sanitizer = require('sanitizer')
 
-let CreateMessage= require('./create-message.jsx')
+import CreateMessage from "./create-message.jsx"
 
 export default class ListUI extends React.Component {
     render() {
