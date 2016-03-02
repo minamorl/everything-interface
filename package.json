@@ -37,6 +37,7 @@
     "gulp-webserver": "^0.9.1",
     "image-webpack-loader": "^1.6.2",
     "jade": "^1.11.0",
+    "jest-cli": "^0.8.2",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "marked": "^0.3.5",
@@ -57,7 +58,7 @@
     "yaml-front-matter": "^3.2.3"
   },
   "scripts": {
-    "test": "gulp deploy"
+    "test": "jest"
   },
   "author": "minamorl"
 }
