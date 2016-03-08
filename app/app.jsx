@@ -1,34 +1,27 @@
-'use strict'
-
-let React = require('react')
-let $ = require('jquery')
-let _ = require('lodash')
-let ReactDOM = require('react-dom')
-
+import React from 'react'
+import ReactDOM from 'react-dom'
 import Thread from './thread.jsx'
 import LoginForm from './loginform.jsx'
 import LogoutForm from './logout.jsx'
 import SignupForm from './signupform.jsx'
 
-let init = () => {
-    let app = document.getElementById('app')
-    $(".logo").click(() => {
+const init = () => {
+    const app = document.getElementById('app')
+    document.querySelector(".logo").onclick = () => {
         window.location.href = "#/thread/"
-    })
-
+    }
     router(app)
 }
 
-$(window).on('hashchange', () => {
-    let app = document.getElementById('app')
-    router(app)
-})
+window.onhashchange = () => {
+  init()
+}
 
-let startswith = (str, target) => {
+const startswith = (str, target) => {
     return str.substring(0, target.length) === target
 }
 
-let router = (app) => {
+const router = app => {
     if (window.location.hash === "#/login")
         ReactDOM.render(
             <LoginForm />, app
@@ -57,8 +50,6 @@ let router = (app) => {
             <Thread query="" />, app
         )
     }
-};
+}
 
-$(document).ready(() => {
-    init()
-});
+document.addEventListener('DOMContentLoaded', init, false);
