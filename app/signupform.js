@@ -1,5 +1,5 @@
 import BaseForm from "./baseform"
-import endpoints from './lib/endpoints'
+import { signup_user } from './lib/service'
 
 const $ = require('jquery')
 export default class SignupForm extends BaseForm {
@@ -10,10 +10,7 @@ export default class SignupForm extends BaseForm {
     }
 
     send(e) {
-        $.post(endpoints.API_SIGNUP, {
-            username: this.state.username,
-            password: this.state.password
-        }, data => {
+        signup_user(this.state.username, this.state.password, data => {
             this.setState({
                 message: data.results.message
             })

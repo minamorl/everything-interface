@@ -1,13 +1,12 @@
 'use strict'
 
 import React from 'react'
-let $ = require('jquery')
-let endpoints = require('./lib/endpoints.js')
+import logout_user from './lib/service'
 
 export default class LogoutForm extends React.Component {
 
     componentDidMount() {
-        $.getJSON(endpoints.API_LOGOUT)
+        logout_user()
     }
 
     render() {

@@ -4,10 +4,10 @@ import React from 'react'
 import Index from './components/index'
 import ListUI from './components/listui'
 import MessageLabel from './components/message-label'
-import endpoints from './lib/endpoints'
+import {get_auth, get_thread, get_recent} from './lib/service'
 
-let $ = require('jquery')
 let _ = require('lodash')
+let $ = require('jquery')
 
 export default class Thread extends React.Component {
     constructor(props) {
@@ -18,7 +18,6 @@ export default class Thread extends React.Component {
             results: [],
             logged_in: false,
             page: 1,
-            endpoint: endpoints.API_THREAD,
         }
         this.componentDidMount = this.componentDidMount.bind(this)
         this.eventChange = this.eventChange.bind(this)
@@ -30,33 +29,19 @@ export default class Thread extends React.Component {
         this.setState({
             textvalue: this.props.query
         })
-        if (this.props.recent) {
-            this.setState({
-                endpoint: endpoints.API_RECENT,
-            })
-            $.getJSON(endpoints.API_RECENT, {
-                q: this.props.query
-            }, (data) => {
-                this.setState({
-                    results: data.results,
-                    textvalue: this.props.query,
-                })
-            })
-        } else {
-            this.updateList(this.props.query)
-        }
-        $.getJSON(endpoints.API_AUTH, (data) => {
-            if (_.isNull(data.results.auth.name))
+        this.updateList(this.props.query)
+        get_auth((data) => {
+            if (_.isNull(data.results.auth.name)) {
                 this.setState({
                     messagelabel: "",
                     logged_in: false,
                 })
-
-            else
+            } else {
                 this.setState({
                     messagelabel: "You are logged in as @" + data.results.auth.name,
                     logged_in: true,
                 })
+            }
         })
 
         $(window).unbind("scroll")
@@ -76,9 +61,7 @@ export default class Thread extends React.Component {
     }
 
     updateList(query) {
-        $.getJSON(endpoints.API_THREAD, {
-            q: query
-        }, (data) => {
+        get_thread(query, 1, (data) => {
             this.setState({
                 results: data.results,
             })
@@ -89,10 +72,7 @@ export default class Thread extends React.Component {
         this.setState({
             page: this.state.page + 1,
         })
-        $.getJSON(this.state.endpoint, {
-            q: this.state.textvalue,
-            page: this.state.page
-        }, (data) => {
+        get_thread(this.state.textvalue, this.state.page, (data) => {
             this.setState({
                 results: this.state.results.concat(data.results),
             })
@@ -100,9 +80,7 @@ export default class Thread extends React.Component {
     }
 
     search(keyword) {
-        $.getJSON(endpoints.API_THREAD, {
-            q: keyword
-        }, (data) => {
+        get_thread(keyword, (data) => {
             this.setState({
                 results: data.results,
                 textvalue: keyword,
@@ -113,7 +91,7 @@ export default class Thread extends React.Component {
     render() {
 
         let listui = <ListUI filterWord={this.state.textvalue} results={this.state.results} search={this.search} updateList={this.updateList} logged_in={this.state.logged_in}/>
-        let index = this.props.recent ? null : <Index hidden={this.state.textvalue!=""}/>
+        let index = <Index hidden={this.state.textvalue!=""}/>;
 
         return <div>
       <input type="text" value={this.state.textvalue} onChange={this.eventChange} placeholder="スレタイ"/>

@@ -38,11 +38,6 @@ const router = app => {
         ReactDOM.unmountComponentAtNode(app)
         ReactDOM.render(
             <Thread query={window.decodeURI(window.location.hash.slice(9))}/>, app).forceUpdate()
-    } else if (window.location.hash === "#/recent") {
-        ReactDOM.unmountComponentAtNode(app)
-        ReactDOM.render(
-            <Thread recent={true} query="" />, app
-        )
     } else {
         window.history.pushState(null, null, "#/thread/")
         ReactDOM.unmountComponentAtNode(app)

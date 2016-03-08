@@ -1,10 +1,7 @@
-'use strict';
+import React, {Component} from 'react'
+import { get_thread_index } from '../lib/service'
 
-let React = require('react')
-let $ = require('jquery')
-let _ = require('lodash')
-
-class Index extends React.Component {
+export default class Index extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -14,10 +11,11 @@ class Index extends React.Component {
     }
 
     componentDidMount() {
-        $.get("/api/index.json", (data) =>
+        get_thread_index((data) => {
             this.setState({
                 results: data.results
-            }))
+            })
+        })
     }
 
     render() {
@@ -28,7 +26,6 @@ class Index extends React.Component {
         if (!this.props.hidden) {
             return <div>
         <h1>最近投稿されたスレッド</h1>
-        <a href="#/recent">全部読む</a>
         <ul className="index">
           {list}
         </ul>
@@ -39,7 +36,7 @@ class Index extends React.Component {
     }
 }
 
-class ListElement extends React.Component {
+class ListElement extends Component {
     constructor(props) {
         super(props)
     }
@@ -49,5 +46,3 @@ class ListElement extends React.Component {
     </li>
     }
 }
-
-module.exports = Index
