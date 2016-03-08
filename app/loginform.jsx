@@ -1,25 +1,19 @@
-'use strict'
-
-let React = require('react')
-let $ = require('jquery')
-let _ = require('lodash')
-let endpoints = require('./lib/endpoints.js')
-
 import BaseForm from "./baseform.jsx"
+const $ = require('jquery')
+const endpoints = require('./lib/endpoints.js')
 
 export default class LoginForm extends BaseForm {
  
     constructor(props) {
         super(props);
         this.label = "login"
-        this.login = this.login.bind(this)
     }
 
-    login(e) {
+    send(e) {
         $.post(endpoints.API_LOGIN, {
             username: this.state.username,
             password: this.state.password
-        }, (data) => {
+        }, data => {
             this.setState({
                 message: data.results.message
             })

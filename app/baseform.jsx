@@ -1,11 +1,6 @@
-'use strict'
+import React, {Component} from 'react'
 
-let React = require('react')
-let $ = require('jquery')
-let _ = require('lodash')
-let endpoints = require('./lib/endpoints.js')
-
-export default class BaseForm extends React.Component {
+export default class BaseForm extends Component {
 
     constructor(props) {
         super(props);
@@ -16,6 +11,7 @@ export default class BaseForm extends React.Component {
         };
         this.eventChange = this.eventChange.bind(this)
         this.passwordChange = this.passwordChange.bind(this)
+        this.send = this.send.bind(this)
     }
 
     eventChange(e) {
@@ -31,7 +27,7 @@ export default class BaseForm extends React.Component {
     }
 
     render() {
-        return <form onSubmit={this.login} autoComplete="on">
+        return <form onSubmit={this.send} autoComplete="on">
       <input value={this.state.username} onChange={this.eventChange} type="text" placeholder="username"/>
       <input value={this.state.password} onChange={this.passwordChange} type="password" placeholder="password"/>
       <button>{this.label}</button>
