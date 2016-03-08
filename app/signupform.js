@@ -1,4 +1,4 @@
-import BaseForm from "./baseform.jsx"
+import BaseForm from "./baseform"
 const $ = require('jquery')
 const endpoints = require('./lib/endpoints.js')
 

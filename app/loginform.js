@@ -1,6 +1,6 @@
-import BaseForm from "./baseform.jsx"
+import BaseForm from "./baseform"
 const $ = require('jquery')
-const endpoints = require('./lib/endpoints.js')
+import endpoints from './lib/endpoints'
 
 export default class LoginForm extends BaseForm {
  

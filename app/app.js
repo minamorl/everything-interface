@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Thread from './thread.jsx'
-import LoginForm from './loginform.jsx'
-import LogoutForm from './logout.jsx'
-import SignupForm from './signupform.jsx'
+import Thread from './thread'
+import LoginForm from './loginform'
+import LogoutForm from './logout'
+import SignupForm from './signupform'
 
 const init = () => {
     const app = document.getElementById('app')

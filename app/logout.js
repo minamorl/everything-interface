@@ -1,8 +1,7 @@
 'use strict'
 
-let React = require('react')
+import React from 'react'
 let $ = require('jquery')
-let _ = require('lodash')
 let endpoints = require('./lib/endpoints.js')
 
 export default class LogoutForm extends React.Component {
@@ -17,4 +16,5 @@ export default class LogoutForm extends React.Component {
       <a href="#/">back to the top</a>
     </div>
     }
+
 }

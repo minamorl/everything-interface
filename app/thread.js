@@ -4,9 +4,9 @@ let React = require('react')
 let $ = require('jquery')
 let _ = require('lodash')
 
-import Index from './components/index.jsx'
-import ListUI from './components/listui.jsx'
-import MessageLabel from './components/message-label.jsx'
+import Index from './components/index'
+import ListUI from './components/listui'
+import MessageLabel from './components/message-label'
 
 let endpoints = require('./lib/endpoints.js')
 
