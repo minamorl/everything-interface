@@ -1,7 +1,7 @@
 import BaseForm from "./baseform"
-const $ = require('jquery')
-const endpoints = require('./lib/endpoints.js')
+import endpoints from './lib/endpoints'
 
+const $ = require('jquery')
 export default class SignupForm extends BaseForm {
 
     constructor(props) {

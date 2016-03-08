@@ -1,15 +1,13 @@
 'use strict'
 
-let React = require('react')
-let $ = require('jquery')
-let _ = require('lodash')
-
+import React from 'react'
 import Index from './components/index'
 import ListUI from './components/listui'
 import MessageLabel from './components/message-label'
+import endpoints from './lib/endpoints'
 
-let endpoints = require('./lib/endpoints.js')
-
+let $ = require('jquery')
+let _ = require('lodash')
 
 export default class Thread extends React.Component {
     constructor(props) {
